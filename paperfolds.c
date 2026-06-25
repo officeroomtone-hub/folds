@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
   printf("Provide starting value and rounds (e.g., x, n): $ ");
 
   char input[1024];
-  int tokenarr[2];
+  int tokenarr[2] = {0, 0};
   int i = 0; //array index
 
   if (fgets(input, sizeof(input), stdin) == NULL) {
@@ -39,6 +39,6 @@ int main(int argc, char *argv[]){
   long long y = folds(tokenarr[0],tokenarr[1]);
   printf("you end up with %lld folds or grains of rice or shmoney if you start with %d and double it %d times\n", y, tokenarr[0], tokenarr[1]);
 
-  long long distance = y * 0.000012;
-  printf("this is the equivalent of %lld meters at a paperthickness of 0.12mm\n", distance);
+  double distance = y * 0.00012;
+  printf("this is the equivalent of %.4f meters at a paper thickness of 0.12mm\n", distance);
 }
