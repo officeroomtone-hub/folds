@@ -4,8 +4,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-int folds(int x, int n){
-   return x * pow(x , n);
+ long long folds(int x, int n){
+   return x * pow(2, n);
 }
 
 int main(int argc, char *argv[]){
@@ -19,28 +19,22 @@ int main(int argc, char *argv[]){
 
   fgets(input,sizeof(input),stdin);
 
-
-  input [strcspn(input, "\n")] = '\0';
+  // input [strcspn(input, "\n")] = '\0';
 
   char *in_tokens = strtok(input, ",");
     while (in_tokens != NULL){
       tokenarr[i] = atoi(in_tokens);
       i++;
-      printf("%s\n", in_tokens);
-      printf("%d\n", tokenarr[i]);
-    in_tokens = strtok(NULL, " ");
+      in_tokens = strtok(NULL, " ");
       };
+ 
+    //for (int j = 0; j < i; j++){
+      //printf("%d\n", tokenarr[j]);
+     // }
 
-  int int_input;
-  int_input = (int64_t) input;
+  long long y = folds(tokenarr[0],tokenarr[1]);
+  printf("you end up with %lld folds or grains of rice or shmoney if you start with %d and double it %d times\n", y, tokenarr[0], tokenarr[1]);
 
-  int int_tokens;
-  int_tokens = (int64_t)in_tokens;
-
-
-  printf(" input is: %s\n in_tokens is: %s\n", input, in_tokens);
-
-  int y = folds (int_input, int_tokens);
-
-  printf("%d", y);
+  long long distance = y * 0.000012;
+  printf("this is the equivalent of %lld meters at a paperthickness of 0.12mm\n", distance);
 }
