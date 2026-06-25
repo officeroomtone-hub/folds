@@ -1,31 +1,35 @@
 #include <stdio.h>
 #include <stdint.h>
-#include <math.h>
 #include <string.h>
 #include <stdlib.h>
 
- long long folds(int x, int n){
+/* long long folds(int x, int n){
    return x * pow(2, n);
-}
+} */
 
+long long folds(int x, int n) {
+   return (long long)x << n; // Shifts the bits of x to the left by n places which results in the doubling of the value
+}
 int main(int argc, char *argv[]){
 
   setbuf(stdout, NULL);
-  printf("$ ");
+  printf("Provide starting value and rounds (e.g., x, n): $ ");
 
   char input[1024];
   int tokenarr[2];
   int i = 0; //array index
 
-  fgets(input,sizeof(input),stdin);
+  if (fgets(input, sizeof(input), stdin) == NULL) {
+      return 1; // Safety check for EOF/error
+  }
 
   // input [strcspn(input, "\n")] = '\0';
 
-  char *in_tokens = strtok(input, ",");
-    while (in_tokens != NULL){
+  char *in_tokens = strtok(input, ", ");
+    while (in_tokens != NULL && i < 2){
       tokenarr[i] = atoi(in_tokens);
       i++;
-      in_tokens = strtok(NULL, " ");
+      in_tokens = strtok(NULL, ", ");
       };
  
     //for (int j = 0; j < i; j++){
